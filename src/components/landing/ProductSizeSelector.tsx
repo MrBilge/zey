@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { productVariants, type ProductSize } from "./productVariants";
 
 type ProductSizeSelectorProps = {
@@ -19,21 +19,30 @@ export default function ProductSizeSelector({
     <>
       <fieldset>
         <legend>Size uygun boyu keşfedin</legend>
-        <div className="sizes">
-          {productVariants.map(({ size }) => (
-            <button
-              key={size}
-              aria-pressed={selectedSize === size}
-              onClick={() => onSizeChange(size)}
-            >
-              {size}
-            </button>
-          ))}
+        <div className="flex justify-between">
+          <div className="sizes">
+            {productVariants.map(({ size }) => (
+              <button
+                key={size}
+                aria-pressed={selectedSize === size}
+                onClick={() => onSizeChange(size)}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+          <Link
+            href="/urunler"
+            className="flex justify-center items-center cursor-pointer"
+          >
+            <p className=" text-sm">Tüm ürünleri incele →</p>
+          </Link>
         </div>
+
+        <p className="size-note" aria-live="polite">
+          {selectedVariant.description}
+        </p>
       </fieldset>
-      <p className="size-note" aria-live="polite">
-        {selectedVariant.description}
-      </p>
     </>
   );
 }

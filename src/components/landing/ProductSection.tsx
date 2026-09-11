@@ -16,7 +16,9 @@ export default function ProductSection() {
       <div className="section-heading">
         <div>
           <div className="eyebrow">SOFRANIZDA YER AÇIN</div>
-          <h2>Her güne biraz <em>zey.</em></h2>
+          <h2>
+            Her güne biraz <em>zey.</em>
+          </h2>
         </div>
       </div>
       <div className="product">

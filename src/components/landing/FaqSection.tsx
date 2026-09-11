@@ -22,6 +22,7 @@ export default function FaqSection() {
   return (
     <section id="sorular" className="wrap section faq">
       <div>
+      
         <div className="eyebrow">AKLINIZDA KALMASIN</div>
         <h2>Biraz da<br /><em>zey’den konuşalım.</em></h2>
       </div>

@@ -29,10 +29,7 @@ export default function HeroSection() {
             </a>
             <a href="#hikayemiz">Bizi tanıyın →</a>
           </div>
-          <div className="note">
-            <b>z.</b>
-            <span>Az malzeme, çok lezzet.<br />Sofranın en sade mutluluğu.</span>
-          </div>
+    
         </div>
       </div>
     </section>

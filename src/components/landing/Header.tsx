@@ -13,7 +13,9 @@ export default function Header() {
 
   return (
     <header className="wrap header">
-      <a className="logo" href="#">zey<sup>®</sup></a>
+      <a className="logo" href="/">
+        zey<sup>®</sup>
+      </a>
       <button
         className="menu"
         aria-expanded={isMenuOpen}
@@ -28,7 +30,9 @@ export default function Header() {
           </a>
         ))}
       </nav>
-      <a className="nav-button" href="#urunler">Zey’i keşfet ↗</a>
+      <a className="nav-button" href="#urunler">
+        Zey’i keşfet ↗
+      </a>
     </header>
   );
 }
