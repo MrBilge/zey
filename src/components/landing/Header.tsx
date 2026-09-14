@@ -1,38 +1,17 @@
-"use client";
+import type { ReactNode } from "react";
+import Link from "next/link";
 
-import { useState } from "react";
+type HeaderProps = {
+  children: ReactNode;
+};
 
-const navigationLinks = [
-  { href: "#urunler", label: "Zeytinyağımız" },
-  { href: "#hikayemiz", label: "Hikâyemiz" },
-  { href: "#sorular", label: "Merak edilenler" },
-];
-
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+export default function Header({ children }: HeaderProps) {
   return (
     <header className="wrap header">
-      <a className="logo" href="/">
+      <Link className="logo" href="/" aria-label="Zey ana sayfa">
         zey<sup>®</sup>
-      </a>
-      <button
-        className="menu"
-        aria-expanded={isMenuOpen}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
-        Menü {isMenuOpen ? "−" : "+"}
-      </button>
-      <nav className={isMenuOpen ? "open" : ""}>
-        {navigationLinks.map(({ href, label }) => (
-          <a key={href} href={href} onClick={() => setIsMenuOpen(false)}>
-            {label}
-          </a>
-        ))}
-      </nav>
-      <a className="nav-button" href="#urunler">
-        Zey’i keşfet ↗
-      </a>
+      </Link>
+      {children}
     </header>
   );
 }

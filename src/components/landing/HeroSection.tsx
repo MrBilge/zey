@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./HeroSection.module.css";
 
 export default function HeroSection() {
@@ -24,10 +25,10 @@ export default function HeroSection() {
             Hayatın en güzel anlarına, bir damla zey.
           </p>
           <div className="actions">
-            <a className="button" href="#urunler">
+            <Link className="button" href="/urunler">
               Zeytinyağımızı keşfet <span>↗</span>
-            </a>
-            <a href="#hikayemiz">Bizi tanıyın →</a>
+            </Link>
+            <Link href="/hakkimiz">Bizi tanıyın →</Link>
           </div>
     
         </div>

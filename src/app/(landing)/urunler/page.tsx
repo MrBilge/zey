@@ -1,12 +1,17 @@
-import AnnouncementBar from "@/components/landing/AnnouncementBar";
-import Header from "@/components/landing/Header";
+import type { Metadata } from "next";
+import ClosingSection from "@/components/landing/ClosingSection";
+import ProductSection from "@/components/landing/ProductSection";
 
-export default function Page() {
+export const metadata: Metadata = {
+  title: "Ürünler | zey",
+  description: "Zey zeytinyağı ürünlerini ve farklı boy seçeneklerini keşfedin.",
+};
+
+export default function ProductsPage() {
   return (
     <>
-      <AnnouncementBar />
-      <Header />
-      <div>fjhdsjfsdfs</div>
+      <ProductSection />
+      <ClosingSection />
     </>
   );
 }

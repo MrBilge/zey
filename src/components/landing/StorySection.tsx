@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function StorySection() {
   return (
     <section className="story" id="hikayemiz">
@@ -16,7 +18,7 @@ export default function StorySection() {
             Zey’i bu düşünceyle kuruyoruz: kendi zeytinyağımızı, kendi hikâyemizle
             sofranıza getirmek için.
           </p>
-          <a href="#urunler">Sofranıza zey katın ↗</a>
+          <Link href="/urunler">Sofranıza zey katın ↗</Link>
         </div>
       </div>
     </section>

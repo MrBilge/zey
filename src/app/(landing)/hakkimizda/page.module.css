@@ -1,0 +1,63 @@
+.intro {
+  padding-block: 92px 35px;
+}
+
+.intro h1 {
+  max-width: 900px;
+}
+
+.intro > p {
+  max-width: 590px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding-top: 40px;
+}
+
+.card {
+  min-height: 300px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card > span {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+
+.card h2 {
+  margin: auto 0 20px;
+  font-size: 35px;
+  letter-spacing: -1px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+@media (max-width: 760px) {
+  .intro {
+    padding-block: 55px 10px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    padding-top: 30px;
+  }
+
+  .card {
+    min-height: 245px;
+  }
+}
