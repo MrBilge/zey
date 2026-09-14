@@ -18,19 +18,24 @@ export default function HeroSection() {
       <div className={`wrap ${styles.content}`}>
         <div className={styles.copy}>
           <div className="eyebrow">— TOPRAKTAN SOFRAYA, ZEY.</div>
-          <h1>İyi bir sofranın<br /><em>kökü.</em></h1>
+          <h1>
+            İyi bir sofranın
+            <br />
+            <em>kökü.</em>
+          </h1>
           <p>
-            Bir dilim ekmek. Uzayan bir kahvaltı.<br />
-            Sevdiklerinizle paylaştığınız bir masa.<br />
+            Bir dilim ekmek. Uzayan bir kahvaltı.
+            <br />
+            Sevdiklerinizle paylaştığınız bir masa.
+            <br />
             Hayatın en güzel anlarına, bir damla zey.
           </p>
           <div className="actions">
             <Link className="button" href="/urunler">
               Zeytinyağımızı keşfet <span>↗</span>
             </Link>
-            <Link href="/hakkimiz">Bizi tanıyın →</Link>
+            <Link href="/hakkimizda">Bizi tanıyın →</Link>
           </div>
-    
         </div>
       </div>
     </section>
