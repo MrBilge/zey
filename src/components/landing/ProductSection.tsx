@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import ProductImageZoom from "./ProductImageZoom";
 import ProductSizeSelector from "./ProductSizeSelector";
 import { productVariants, type ProductSize } from "./productVariants";
+import styles from "./ProductSection.module.css";
 
 export default function ProductSection() {
   const [selectedSize, setSelectedSize] = useState<ProductSize>("500 ml");
@@ -22,11 +24,23 @@ export default function ProductSection() {
         </div>
       </div>
       <div className="product">
-        <ProductImageZoom
-          key={selectedSize}
-          src={selectedVariant.image}
-          size={selectedSize}
-        />
+        <div className={styles.productVisual}>
+          <ProductImageZoom
+            key={selectedSize}
+            src={selectedVariant.image}
+            size={selectedSize}
+          />
+          <Link
+            href={{
+              pathname: "/siparis",
+              query: { boyut: selectedVariant.slug },
+            }}
+            className={styles.orderLink}
+          >
+            <span>Sipariş ver</span>
+            <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
         <div className="product-info">
           <div className="eyebrow">SADECE ZEYTİNYAĞI. BİR SÜRÜ GÜZEL AN.</div>
           <h3>Sofranın vazgeçilmezi</h3>

@@ -1,3 +1,27 @@
+.productVisual {
+  display: grid;
+  gap: 14px;
+}
+
+.orderLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: 16px 22px;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  background: var(--green);
+  color: #fff;
+  font-size: 14px;
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.orderLink:hover {
+  background: #48613b;
+  transform: translateY(-2px);
+}
+
 .imageContainer {
   background: #f1eee5;
   position: relative;

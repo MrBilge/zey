@@ -24,4 +24,6 @@ npm run lint
 - `src/components/landing`: sayfa bölümleri ve etkileşimli bileşenler
 - `public/products`: boyuta göre ürün görselleri
 
-Ürün boyutu seçimi, görsel yakınlaştırma, büyük görsel önizlemesi ve animasyonlu sık sorulan sorular içerir. Görseller ve ambalaj boyları konsepttir; ödeme ve sipariş entegrasyonu henüz yoktur.
+Ürün boyutu seçimi, görsel yakınlaştırma, büyük görsel önizlemesi, sipariş formu ve modal içinde iyzico Checkout Form içerir. Kart bilgileri doğrudan iyzico tarafından alınır. Sipariş e-postası yalnızca iyzico callback sonucu sunucuda doğrulandıktan ve ödeme başarılı olduktan sonra gönderilir.
+
+iyzico için `IYZIPAY_API_KEY`, `IYZIPAY_SECRET_KEY`, `IYZIPAY_URI`, `ORDER_TOKEN_SECRET`, `SITE_URL` ve ürün fiyatı ortam değişkenleri `.env.example` dosyasında listelenmiştir. iyzico callback adresi geçerli bir HTTPS adresinde çalışmalıdır.

@@ -6,7 +6,6 @@ import { useState } from "react";
 import styles from "./Navigation.module.css";
 
 const navigationLinks = [
-  { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/urunler", label: "Ürünler" },
   { href: "/merak-edilenler", label: "Merak edilenler" },
   { href: "/hikayemiz", label: "Hikâyemiz" },
