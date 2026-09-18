@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import styles from "./PaymentModal.module.css";
 
 type PaymentResult = {
-  type: "iyzico-payment-result";
+  type: "payment-result";
   status: "success" | "failure";
   message: string;
 };
@@ -30,7 +30,7 @@ function isPaymentResult(value: unknown): value is PaymentResult {
 
   const candidate = value as Partial<PaymentResult>;
   return (
-    candidate.type === "iyzico-payment-result" &&
+    candidate.type === "payment-result" &&
     (candidate.status === "success" || candidate.status === "failure") &&
     typeof candidate.message === "string"
   );
@@ -107,7 +107,7 @@ export default function PaymentModal({
 
         <div className={styles.modalHeader}>
           <div>
-            <div className={styles.eyebrow}>İYZİCO GÜVENLİ ÖDEME</div>
+            <div className={styles.eyebrow}>GELİŞTİRME ÖDEMESİ</div>
             <h2 id="payment-title">Ödemeni tamamla.</h2>
           </div>
           <dl className={styles.compactSummary}>
@@ -125,15 +125,15 @@ export default function PaymentModal({
         </div>
 
         <p id="payment-description" className={styles.description}>
-          Kart bilgilerini aşağıdaki iyzico ödeme alanına güvenle girebilirsin.
-          Sipariş e-postası yalnızca ödeme başarılı olduğunda gönderilir.
+          Aşağıdaki mock ödeme alanından başarılı veya başarısız senaryoyu
+          seçebilirsin. Bu akışta gerçek ödeme yapılmaz.
         </p>
 
         <div className={styles.checkoutArea} aria-busy={isLoading}>
           {isLoading && (
             <div className={styles.loading} role="status">
               <span className={styles.spinner} aria-hidden="true" />
-              <strong>iyzico ödeme formu hazırlanıyor…</strong>
+              <strong>Mock ödeme formu hazırlanıyor…</strong>
               <small>Bu işlem birkaç saniye sürebilir.</small>
             </div>
           )}
@@ -152,15 +152,14 @@ export default function PaymentModal({
             <iframe
               className={styles.checkoutFrame}
               src={checkoutUrl}
-              title="iyzico güvenli ödeme formu"
+              title="Mock ödeme formu"
               allow="payment *"
             />
           )}
         </div>
 
         <p className={styles.note}>
-          Kart bilgileriniz Zey sunucularına aktarılmaz; ödeme iyzico tarafından
-          işlenir.
+          Bu sağlayıcı yalnızca geliştirme içindir. Gerçek kart bilgisi girmeyin.
         </p>
       </section>
     </div>

@@ -24,6 +24,6 @@ npm run lint
 - `src/components/landing`: sayfa bölümleri ve etkileşimli bileşenler
 - `public/products`: boyuta göre ürün görselleri
 
-Ürün boyutu seçimi, görsel yakınlaştırma, büyük görsel önizlemesi, sipariş formu ve modal içinde iyzico Checkout Form içerir. Kart bilgileri doğrudan iyzico tarafından alınır. Sipariş e-postası yalnızca iyzico callback sonucu sunucuda doğrulandıktan ve ödeme başarılı olduktan sonra gönderilir.
+Ürün boyutu seçimi, görsel yakınlaştırma, büyük görsel önizlemesi, sipariş formu ve modal içinde geliştirme amaçlı ödeme simülatörü içerir. `MockPaymentProvider`, gerçek kart bilgisi veya dış ödeme servisi kullanmadan başarılı ve başarısız ödeme senaryolarını çalıştırır. Başarılı senaryo sipariş e-postası akışını da tetikler ve e-postayı açıkça `[MOCK]` olarak işaretler.
 
-iyzico için `IYZIPAY_API_KEY`, `IYZIPAY_SECRET_KEY`, `IYZIPAY_URI`, `ORDER_TOKEN_SECRET`, `SITE_URL` ve ürün fiyatı ortam değişkenleri `.env.example` dosyasında listelenmiştir. iyzico callback adresi geçerli bir HTTPS adresinde çalışmalıdır.
+Geliştirme ortamında `PAYMENT_PROVIDER=mock` kullanılmalıdır. İmzalı mock oturumları için `ORDER_TOKEN_SECRET`, fiyatlar için `ZEY_PRICE_250_ML`, `ZEY_PRICE_500_ML` ve `ZEY_PRICE_1_L` gerekir. Değişkenler `.env.example` dosyasında listelenmiştir. `MockPaymentProvider` production ortamında çalışmayı reddeder; gerçek sağlayıcıya geçmeden production sipariş akışı açılmamalıdır.

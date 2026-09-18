@@ -150,17 +150,6 @@
   text-align: center;
 }
 
-.success {
-  display: grid;
-  gap: 5px;
-  padding: 16px 18px;
-  border: 1px solid #7a8957;
-  border-radius: 4px;
-  background: #eef1e5;
-  color: var(--green);
-  font-size: 13px;
-}
-
 .submitError {
   display: grid;
   gap: 5px;
@@ -172,6 +161,112 @@
   font-size: 13px;
 }
 
+.orderSuccess {
+  display: flex;
+  min-height: 680px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(30px, 5vw, 64px) 0;
+  text-align: center;
+}
+
+.successIcon {
+  display: grid;
+  width: 82px;
+  height: 82px;
+  place-items: center;
+  margin-bottom: 26px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 15px 35px rgb(41 60 40 / 20%);
+  color: #fff;
+  font-size: 39px;
+  line-height: 1;
+  animation: successIn 280ms ease-out;
+}
+
+.successTitle {
+  max-width: 580px;
+  margin: 14px 0 16px;
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -2px;
+  outline: none;
+}
+
+.successMessage {
+  max-width: 500px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.successSummary {
+  display: grid;
+  width: min(100%, 460px);
+  margin: 32px 0 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.successSummary div {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 13px 4px;
+}
+
+.successSummary div + div {
+  border-top: 1px solid var(--line);
+}
+
+.successSummary dt {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.successSummary dd {
+  margin: 0;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.successNote {
+  max-width: 480px;
+  margin: 25px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.newOrderButton {
+  margin-top: 28px;
+  padding: 13px 20px;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--green);
+  font-weight: 700;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.newOrderButton:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+@keyframes successIn {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+}
+
 @media (max-width: 760px) {
   .formPanel {
     padding: 28px 20px;
@@ -179,5 +274,15 @@
 
   .fieldRow {
     grid-template-columns: 1fr;
+  }
+
+  .orderSuccess {
+    min-height: 560px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .successIcon {
+    animation: none;
   }
 }

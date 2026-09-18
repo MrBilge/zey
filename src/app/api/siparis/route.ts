@@ -1,5 +1,5 @@
 import { orderSubmissionSchema } from "@/components/order/orderSchema";
-import { initializeCheckoutForm } from "@/lib/iyzico";
+import { getPaymentProvider } from "@/lib/payment/provider";
 
 export const runtime = "nodejs";
 
@@ -38,19 +38,20 @@ export async function POST(request: Request) {
   }
 
   try {
-    const checkout = await initializeCheckoutForm(result.data, request);
+    const paymentProvider = getPaymentProvider();
+    const checkout = await paymentProvider.initializeCheckout(result.data, request);
 
     return Response.json(
       {
         success: true,
-        message: "iyzico ödeme formu hazırlandı.",
+        message: `${paymentProvider.name} ödeme formu hazırlandı.`,
         ...checkout,
       },
       { status: 201 },
     );
   } catch (error) {
     console.error(
-      "iyzico ödeme formu başlatılamadı:",
+      "Ödeme formu başlatılamadı:",
       error instanceof Error ? error.message : error,
     );
 

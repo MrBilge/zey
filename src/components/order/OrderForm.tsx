@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useState, type FormEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
 import {
   orderSchema,
   type OrderSubmissionValues,
@@ -26,6 +32,12 @@ type OrderField =
 
 type FieldErrors = Partial<Record<OrderField, string>>;
 
+type CompletedOrder = {
+  productSize: OrderSubmissionValues["productSize"];
+  quantity: number;
+  totalPrice: string;
+};
+
 export default function OrderForm({ productSize }: OrderFormProps) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -35,8 +47,15 @@ export default function OrderForm({ productSize }: OrderFormProps) {
   const [paymentError, setPaymentError] = useState("");
   const [checkoutUrl, setCheckoutUrl] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
+  const [completedOrder, setCompletedOrder] =
+    useState<CompletedOrder | null>(null);
   const [pendingOrder, setPendingOrder] =
     useState<OrderSubmissionValues | null>(null);
+  const successTitleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (isSubmitted) successTitleRef.current?.focus();
+  }, [isSubmitted]);
 
   const closePaymentModal = useCallback(() => {
     if (!isInitializing) {
@@ -52,6 +71,11 @@ export default function OrderForm({ productSize }: OrderFormProps) {
       setCheckoutUrl("");
 
       if (status === "success") {
+        setCompletedOrder({
+          productSize: pendingOrder?.productSize ?? productSize,
+          quantity: pendingOrder?.quantity ?? 1,
+          totalPrice,
+        });
         setPendingOrder(null);
         setIsSubmitted(true);
         setSuccessMessage(message);
@@ -61,12 +85,13 @@ export default function OrderForm({ productSize }: OrderFormProps) {
 
       setPaymentError(message);
     },
-    [],
+    [pendingOrder, productSize, totalPrice],
   );
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitted(false);
+    setCompletedOrder(null);
     setSuccessMessage("");
     setSubmitError("");
     setPaymentError("");
@@ -159,7 +184,7 @@ export default function OrderForm({ productSize }: OrderFormProps) {
       }
 
       if (!payload.checkoutUrl) {
-        throw new Error("iyzico ödeme formu alınamadı.");
+        throw new Error("Ödeme formu alınamadı.");
       }
 
       setCheckoutUrl(payload.checkoutUrl);
@@ -176,6 +201,70 @@ export default function OrderForm({ productSize }: OrderFormProps) {
   }
 
   const errorFor = (field: OrderField) => errors[field];
+
+  if (isSubmitted) {
+    return (
+      <div className={styles.formPanel}>
+        <section
+          className={styles.orderSuccess}
+          role="status"
+          aria-labelledby="order-success-title"
+        >
+          <div className={styles.successIcon} aria-hidden="true">
+            ✓
+          </div>
+          <div className="eyebrow">SİPARİŞİN ALINDI</div>
+          <h1
+            id="order-success-title"
+            ref={successTitleRef}
+            className={styles.successTitle}
+            tabIndex={-1}
+          >
+            Siparişin başarıyla oluşturuldu.
+          </h1>
+          <p className={styles.successMessage}>{successMessage}</p>
+
+          {completedOrder && (
+            <dl className={styles.successSummary}>
+              <div>
+                <dt>Ürün</dt>
+                <dd>Zey {completedOrder.productSize}</dd>
+              </div>
+              <div>
+                <dt>Adet</dt>
+                <dd>{completedOrder.quantity}</dd>
+              </div>
+              {completedOrder.totalPrice && (
+                <div>
+                  <dt>Toplam</dt>
+                  <dd>{completedOrder.totalPrice} TL</dd>
+                </div>
+              )}
+            </dl>
+          )}
+
+          <p className={styles.successNote}>
+            Sipariş bilgilerin ekibimize iletildi. Hazırlık süreciyle ilgili
+            seninle iletişime geçeceğiz.
+          </p>
+          <button
+            className={styles.newOrderButton}
+            type="button"
+            onClick={() => {
+              setIsSubmitted(false);
+              setSuccessMessage("");
+              setCompletedOrder(null);
+              requestAnimationFrame(() => {
+                document.querySelector<HTMLInputElement>("#fullName")?.focus();
+              });
+            }}
+          >
+            Yeni sipariş oluştur
+          </button>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.formPanel}>
@@ -398,12 +487,6 @@ export default function OrderForm({ productSize }: OrderFormProps) {
           </div>
         )}
 
-        {isSubmitted && (
-          <div className={styles.success} role="status" tabIndex={-1}>
-            <strong>Siparişiniz bize ulaştı.</strong>
-            <span>{successMessage}</span>
-          </div>
-        )}
       </form>
 
       <PaymentModal

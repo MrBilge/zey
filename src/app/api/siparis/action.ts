@@ -2,6 +2,7 @@ import "server-only";
 
 import nodemailer from "nodemailer";
 import type { OrderSubmissionValues } from "@/components/order/orderSchema";
+import type { ConfirmedPayment } from "@/lib/payment/types";
 
 function escapeHtml(value: string) {
   return value
@@ -11,11 +12,6 @@ function escapeHtml(value: string) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
-
-type ConfirmedPayment = {
-  paymentId: string;
-  paidPrice: string;
-};
 
 export async function sendOrderEmail(
   order: OrderSubmissionValues,
@@ -43,16 +39,25 @@ export async function sendOrderEmail(
   }).format(new Date());
   const note = order.note || "Belirtilmedi";
   const address = `${order.address}, ${order.district}/${order.city}`;
+  const isMockPayment = payment.provider === "MockPaymentProvider";
+  const subjectPrefix = isMockPayment ? "[MOCK] " : "";
+  const emailHeading = isMockPayment
+    ? "MOCK ÖDEMESİ ONAYLANAN YENİ SİPARİŞ"
+    : "ÖDEMESİ ONAYLANAN YENİ SİPARİŞ";
+  const introduction = isMockPayment
+    ? "Mock sağlayıcı tarafından onaylanan yeni bir Zey siparişi var."
+    : "Ödeme sağlayıcısı tarafından onaylanan yeni bir Zey siparişi var.";
 
   await transporter.sendMail({
     from: `"Zey Sipariş" <${emailUser}>`,
     to: emailUser,
     replyTo: order.email,
-    subject: `Ödemesi alındı · Zey ${order.productSize} · ${order.fullName}`,
+    subject: `${subjectPrefix}Ödeme onaylandı · Zey ${order.productSize} · ${order.fullName}`,
     text: [
-      "Ödemesi başarıyla alınmış yeni bir Zey siparişi var.",
+      introduction,
       "",
-      `iyzico ödeme numarası: ${payment.paymentId}`,
+      `Ödeme sağlayıcısı: ${payment.provider}`,
+      `Ödeme referansı: ${payment.paymentId}`,
       `Ödenen tutar: ${payment.paidPrice} TL`,
       `Ürün: Zey ${order.productSize}`,
       `Adet: ${order.quantity}`,
@@ -67,7 +72,7 @@ export async function sendOrderEmail(
       <div style="font-family:Arial,sans-serif;max-width:620px;margin:auto;color:#293c28">
         <div style="background:#293c28;color:#f8f6ef;padding:24px 28px">
           <div style="font-family:Georgia,serif;font-size:36px;font-style:italic">zey</div>
-          <div style="margin-top:8px;font-size:12px;letter-spacing:.12em">ÖDEMESİ ALINAN YENİ SİPARİŞ</div>
+          <div style="margin-top:8px;font-size:12px;letter-spacing:.12em">${emailHeading}</div>
         </div>
         <div style="padding:28px;border:1px solid #dedfd3;border-top:0;background:#f8f6ef">
           <h1 style="font-family:Georgia,serif;font-size:28px;font-weight:400;margin:0 0 22px">
@@ -75,7 +80,8 @@ export async function sendOrderEmail(
           </h1>
           <table style="width:100%;border-collapse:collapse;font-size:14px">
             <tbody>
-              <tr><td style="padding:9px 0;color:#687060">Ödeme numarası</td><td style="padding:9px 0;text-align:right">${escapeHtml(payment.paymentId)}</td></tr>
+              <tr><td style="padding:9px 0;color:#687060">Ödeme sağlayıcısı</td><td style="padding:9px 0;text-align:right">${escapeHtml(payment.provider)}</td></tr>
+              <tr><td style="padding:9px 0;color:#687060">Ödeme referansı</td><td style="padding:9px 0;text-align:right">${escapeHtml(payment.paymentId)}</td></tr>
               <tr><td style="padding:9px 0;color:#687060">Ödenen tutar</td><td style="padding:9px 0;text-align:right">${escapeHtml(payment.paidPrice)} TL</td></tr>
               <tr><td style="padding:9px 0;color:#687060">Ad soyad</td><td style="padding:9px 0;text-align:right">${escapeHtml(order.fullName)}</td></tr>
               <tr><td style="padding:9px 0;color:#687060">Telefon</td><td style="padding:9px 0;text-align:right">${escapeHtml(order.phone)}</td></tr>
