@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import ClosingSection from "@/components/landing/ClosingSection";
-import StorySection from "@/components/landing/StorySection";
+import StoryPageContent from "@/components/story/StoryPage";
 
 export const metadata: Metadata = {
   title: "Hikâyemiz | zey",
@@ -8,10 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function StoryPage() {
-  return (
-    <>
-      <StorySection />
-      <ClosingSection />
-    </>
-  );
+  return <StoryPageContent />;
 }

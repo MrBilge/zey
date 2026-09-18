@@ -1,0 +1,449 @@
+.page {
+  overflow: hidden;
+  background: #f8f6ef;
+}
+
+.hero {
+  position: relative;
+  min-height: min(760px, calc(100svh - 139px));
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+  color: #fff;
+}
+
+.heroImage {
+  z-index: -2;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.heroShade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(13 24 13 / 80%) 0%, rgb(13 24 13 / 44%) 56%, rgb(13 24 13 / 14%) 100%),
+    linear-gradient(0deg, rgb(10 18 9 / 56%) 0%, transparent 45%);
+}
+
+.heroContent {
+  padding-block: clamp(90px, 12vw, 150px) 82px;
+}
+
+.kicker {
+  margin: 0 0 22px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+}
+
+.heroTitle {
+  max-width: 1000px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(52px, 6.8vw, 104px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.heroTitle em {
+  color: #e2d79e;
+}
+
+.heroIntro {
+  max-width: 600px;
+  margin-top: 34px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgb(255 255 255 / 88%);
+}
+
+.scrollCue {
+  position: absolute;
+  right: 6%;
+  bottom: 80px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  writing-mode: vertical-rl;
+}
+
+.scrollCue span {
+  font-size: 19px;
+}
+
+.roots {
+  display: grid;
+  grid-template-columns: 0.65fr 1.55fr;
+  gap: 10%;
+  padding-block: clamp(90px, 12vw, 165px);
+}
+
+.chapterLabel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  align-self: start;
+  color: #6e755f;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.chapterLabel span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid #bfc5b5;
+  border-radius: 50%;
+}
+
+.chapterLabel p {
+  margin: 0;
+}
+
+.rootsCopy {
+  max-width: 850px;
+}
+
+.rootsStory {
+  margin: 0;
+}
+
+.lead {
+  display: block;
+  font: 400 clamp(39px, 4.5vw, 68px) / 1.08 Georgia, "Times New Roman", serif;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.rootsBody {
+  display: block;
+  max-width: 620px;
+  margin: 34px 0 0 auto;
+  color: #586151;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.bodyCopy {
+  max-width: 620px;
+  margin: 34px 0 0 auto;
+  color: #586151;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.harvest {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  gap: clamp(50px, 8vw, 120px);
+  align-items: center;
+  padding-bottom: clamp(100px, 13vw, 180px);
+}
+
+.harvestImageWrap {
+  position: relative;
+  min-height: 760px;
+  margin: 0;
+}
+
+.harvestImage {
+  object-fit: cover;
+}
+
+.harvestImageWrap figcaption {
+  position: absolute;
+  right: -28px;
+  bottom: 42px;
+  padding: 12px 16px;
+  background: #f8f6ef;
+  color: #687060;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  transform: rotate(-90deg) translateX(100%);
+  transform-origin: right bottom;
+}
+
+.harvestCopy h2,
+.tableCard h2 {
+  margin: 25px 0 0;
+  color: #293c28;
+  font-size: clamp(45px, 5vw, 72px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.harvestCopy .bodyCopy {
+  margin: 31px 0 0;
+}
+
+.signature {
+  display: block;
+  margin-top: 48px;
+  color: #9b863e;
+  font: italic 58px / 1 Georgia, "Times New Roman", serif;
+}
+
+.promise {
+  background: #293c28;
+  color: #f8f6ef;
+}
+
+.promiseInner {
+  position: relative;
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+  padding-block: 85px;
+}
+
+.promiseInner p {
+  position: relative;
+  max-width: 1000px;
+  margin: 0;
+  text-align: center;
+  font: 400 clamp(38px, 4.5vw, 66px) / 1.16 Georgia, "Times New Roman", serif;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.promiseMark {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  color: rgb(232 213 143 / 16%);
+  font: 280px / 1 Georgia, serif;
+}
+
+.tableStory {
+  position: relative;
+  padding-block: clamp(100px, 13vw, 180px);
+}
+
+.tableImageWrap {
+  position: relative;
+  width: 78%;
+  min-height: 650px;
+  margin-left: auto;
+}
+
+.tableImage {
+  object-fit: cover;
+}
+
+.tableCard {
+  position: relative;
+  z-index: 1;
+  width: min(620px, 54%);
+  margin-top: -360px;
+  padding: clamp(42px, 5vw, 74px);
+  background: #fff;
+  box-shadow: 0 30px 80px rgb(41 60 40 / 12%);
+}
+
+.tableCard h2 {
+  font-size: clamp(38px, 4.2vw, 62px);
+}
+
+.tableCard > p {
+  margin-top: 28px;
+  color: #586151;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.tableCard .finalLine {
+  padding-top: 26px;
+  border-top: 1px solid #dedfd3;
+  color: #293c28;
+  font: 400 23px / 1.45 Georgia, "Times New Roman", serif;
+}
+
+.finalLine em {
+  color: #73824d;
+}
+
+.storyLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 34px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid currentColor;
+  font-size: 13px;
+}
+
+.storyLink span {
+  transition: transform 180ms ease;
+}
+
+.storyLink:hover span {
+  transform: translate(3px, -3px);
+}
+
+.manifesto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0 95px;
+  color: #293c28;
+  font: 400 clamp(27px, 4.2vw, 58px) / 1 Georgia, "Times New Roman", serif;
+  letter-spacing: 0.08em;
+}
+
+.manifesto i {
+  color: #9b9f8c;
+  font: normal 26px / 1 Arial, sans-serif;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 690px;
+  }
+
+  .roots {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .harvest {
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+  }
+
+  .harvestImageWrap {
+    min-height: 620px;
+  }
+
+  .tableImageWrap {
+    width: 90%;
+    min-height: 540px;
+  }
+
+  .tableCard {
+    width: 58%;
+    margin-top: -270px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: 650px;
+  }
+
+  .heroImage {
+    object-position: 35% center;
+  }
+
+  .heroShade {
+    background: linear-gradient(0deg, rgb(11 22 11 / 88%) 0%, rgb(11 22 11 / 28%) 78%);
+  }
+
+  .heroContent {
+    padding-bottom: 58px;
+  }
+
+  .heroTitle {
+    font-size: clamp(47px, 13vw, 66px);
+  }
+
+  .heroIntro {
+    margin-top: 26px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .scrollCue {
+    display: none;
+  }
+
+  .roots {
+    gap: 38px;
+    padding-block: 80px 90px;
+  }
+
+  .lead {
+    font-size: 40px;
+  }
+
+  .bodyCopy {
+    margin-top: 26px;
+    font-size: 15px;
+  }
+
+  .rootsBody {
+    margin-top: 26px;
+    font-size: 15px;
+  }
+
+  .harvest {
+    grid-template-columns: 1fr;
+    gap: 54px;
+    padding-bottom: 90px;
+  }
+
+  .harvestImageWrap {
+    min-height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .harvestImageWrap figcaption {
+    right: 13px;
+    bottom: 13px;
+    transform: none;
+  }
+
+  .harvestCopy h2 {
+    font-size: 45px;
+  }
+
+  .promiseInner {
+    min-height: 360px;
+  }
+
+  .promiseMark {
+    font-size: 180px;
+  }
+
+  .tableStory {
+    padding-block: 80px 95px;
+  }
+
+  .tableImageWrap {
+    width: 100%;
+    min-height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .tableCard {
+    width: calc(100% - 24px);
+    margin: -34px auto 0;
+    padding: 38px 28px;
+  }
+
+  .tableCard h2 {
+    font-size: 40px;
+  }
+
+  .manifesto {
+    padding-bottom: 70px;
+    font-size: clamp(17px, 5.7vw, 28px);
+    letter-spacing: 0.04em;
+  }
+
+  .manifesto i {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .storyLink span {
+    transition: none;
+  }
+}

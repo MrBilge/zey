@@ -12,7 +12,8 @@ export default function StorySection() {
           <span className="story-logo">zey.</span>
           <p>
             Bizim için zeytinyağı, bir yemeğin içindekiler listesinden çok daha
-            fazlası. Bir araya gelmenin, özenle hazırlamanın ve paylaşmanın bir parçası.
+            fazlası. Bir araya gelmenin, özenle hazırlamanın ve paylaşmanın bir
+            parçası.
           </p>
           <p>
             Zey’i bu düşünceyle kuruyoruz: kendi zeytinyağımızı, kendi hikâyemizle
