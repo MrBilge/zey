@@ -52,11 +52,6 @@ export default function ProductSection() {
             selectedSize={selectedSize}
             onSizeChange={setSelectedSize}
           />
-          <div className="availability">
-            <strong>Çok yakında sofranızda</strong>
-            <p>Ürün seçenekleri ve satış bilgileri yakında burada.</p>
-          </div>
-          <small>Görsel ve ambalaj boyları tasarım amaçlıdır.</small>
         </div>
       </div>
     </section>

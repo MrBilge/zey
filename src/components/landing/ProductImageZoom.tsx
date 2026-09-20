@@ -9,7 +9,7 @@ type ProductImageZoomProps = { src: string; size: string };
 export default function ProductImageZoom({ src, size }: ProductImageZoomProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const alt = `Zey ${size} zeytinyağı şişe tasarımı`;
+  const alt = `Zey ${size} zeytinyağı ürün ambalajı`;
 
   function moveZoom(event: PointerEvent<HTMLButtonElement>) {
     if (event.pointerType !== "mouse") return;

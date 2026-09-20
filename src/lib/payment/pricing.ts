@@ -4,9 +4,10 @@ const priceEnvironmentKeys: Record<
   OrderSubmissionValues["productSize"],
   string
 > = {
-  "250 ml": "ZEY_PRICE_250_ML",
   "500 ml": "ZEY_PRICE_500_ML",
-  "1 L": "ZEY_PRICE_1_L",
+  "1L": "ZEY_PRICE_1_L",
+  "2L": "ZEY_PRICE_2_L",
+  "5L": "ZEY_PRICE_5_L",
 };
 
 function requireEnvironment(name: string) {

@@ -34,7 +34,7 @@ export default function HeroSection() {
             <Link className="button" href="/urunler">
               Zeytinyağımızı keşfet <span>↗</span>
             </Link>
-            <Link href="/hakkimizda">Bizi tanıyın →</Link>
+            <Link href="/hikayemiz">Bizi tanıyın →</Link>
           </div>
         </div>
       </div>

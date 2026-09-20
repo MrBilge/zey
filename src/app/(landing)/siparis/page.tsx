@@ -36,7 +36,7 @@ export default async function OrderPage({ searchParams }: OrderPageProps) {
             <span className={styles.tag}>SEÇTİĞİNİZ ÜRÜN · {product.size}</span>
             <Image
               src={product.image}
-              alt={`Zey ${product.size} zeytinyağı şişesi`}
+              alt={`Zey ${product.size} zeytinyağı ürün ambalajı`}
               width={800}
               height={800}
               sizes="(max-width: 920px) 90vw, 36vw"

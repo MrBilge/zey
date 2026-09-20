@@ -1,4 +1,13 @@
 import { z } from "zod";
+import {
+  productVariants,
+  type ProductSize,
+} from "@/components/landing/productVariants";
+
+const productSizes = productVariants.map(({ size }) => size) as [
+  ProductSize,
+  ...ProductSize[],
+];
 
 export const orderSchema = z.object({
   fullName: z
@@ -43,7 +52,7 @@ export const orderSchema = z.object({
 });
 
 export const orderSubmissionSchema = orderSchema.extend({
-  productSize: z.enum(["250 ml", "500 ml", "1 L"], {
+  productSize: z.enum(productSizes, {
     error: "Geçerli bir ürün boyutu seçin.",
   }),
 });
